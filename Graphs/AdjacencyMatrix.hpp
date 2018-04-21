@@ -14,6 +14,9 @@ public:
     void fill(int tab[]);
     void preorder();
     void postorder();
+    void DFS();
+    int GetN(){return n;}
+    void printTab();
     AdjacencyMatrix(int ile);
     ~AdjacencyMatrix();
 private:

@@ -8,9 +8,21 @@
 
 #include <iostream>
 #include <fstream>
+#include "AdjacencyMatrix.hpp"
+#include "EdgeTable.hpp"
+
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    int tab[6][6] = {{0,1,1,0,1,0},
+                    {0,0,0,1,0,0},
+                    {0,0,0,1,0,0},
+                    {0,0,0,0,1,0},
+                    {0,0,0,0,0,1},
+                    {0,0,0,0,0,0}};
+    int n_tab[] = {1,1,0,1,0,0,1,0,0,1,0,0,1,0,1};
+    AdjacencyMatrix *macierz = new AdjacencyMatrix(6);
+    macierz->fill(n_tab);
+    macierz->printTab();
+    delete macierz;
     return 0;
 }

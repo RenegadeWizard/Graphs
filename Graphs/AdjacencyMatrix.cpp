@@ -7,6 +7,8 @@
 //
 
 #include "AdjacencyMatrix.hpp"
+#include <iostream>
+#include <queue>
 
 AdjacencyMatrix::AdjacencyMatrix(int ile){
     n = ile;
@@ -24,7 +26,7 @@ void AdjacencyMatrix::fill(int array[]){
     int *ptr = array;
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
-            if(i>j){
+            if(i<j){
                 tab[i][j] = *ptr;
                 ptr++;
             }else{
@@ -32,6 +34,20 @@ void AdjacencyMatrix::fill(int array[]){
             }
         }
     }
+}
+
+void AdjacencyMatrix::printTab(){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            std::cout<<tab[i][j];
+        }
+        std::cout<<"\n";
+    }
+    std::cout<<"\n";
+}
+
+void AdjacencyMatrix::DFS(){
+    return;
 }
 
 void AdjacencyMatrix::preorder(){
