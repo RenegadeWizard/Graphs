@@ -46,8 +46,32 @@ void AdjacencyMatrix::printTab(){
     std::cout<<"\n";
 }
 
-void AdjacencyMatrix::DFS(){
-    return;
+void AdjacencyMatrix::BFS(){
+    int b_count[n];
+    int temp = n;
+    for(int i=0;i<n;i++)
+        b_count[i] = 0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(tab[i][j] == 1)
+                b_count[j] += 1;
+        }
+    }
+    while(temp){
+        for(int i=0;i<n;i++){
+            if(b_count[i]==-1)
+                continue;
+            if(b_count[i]==0){
+                b_count[i] = -1;
+                for(int j=0;j<n;j++)
+                    if(tab[i][j]==1)
+                        b_count[j]--;
+                std::cout<<i<<" ";
+                temp--;
+            }
+        }
+    }
+    std::cout<<"\n";
 }
 
 void AdjacencyMatrix::preorder(){

@@ -14,7 +14,7 @@ public:
     void fill(int tab[]);
     void preorder();
     void postorder();
-    void DFS();
+    void BFS();
     int GetN(){return n;}
     void printTab();
     AdjacencyMatrix(int ile);

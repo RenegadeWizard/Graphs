@@ -14,7 +14,7 @@
 
 int main(int argc, const char * argv[]) {
     int tab[6][6] = {{0,1,1,0,1,0},
-                    {0,0,0,1,0,0},
+                    {0,0,1,1,0,0},
                     {0,0,0,1,0,0},
                     {0,0,0,0,1,0},
                     {0,0,0,0,0,1},
@@ -23,6 +23,7 @@ int main(int argc, const char * argv[]) {
     AdjacencyMatrix *macierz = new AdjacencyMatrix(6);
     macierz->fill(n_tab);
     macierz->printTab();
+    macierz->BFS();
     delete macierz;
     return 0;
 }
