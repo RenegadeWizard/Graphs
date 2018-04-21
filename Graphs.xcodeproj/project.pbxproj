@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E283200320878AC6007CB0BF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E283200220878AC6007CB0BF /* main.cpp */; };
+		E283200B20878B47007CB0BF /* AdjacencyMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E283200920878B47007CB0BF /* AdjacencyMatrix.cpp */; };
+		E283200E20879688007CB0BF /* EdgeTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E283200C20879688007CB0BF /* EdgeTable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		E2831FFF20878AC6007CB0BF /* Graphs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Graphs; sourceTree = BUILT_PRODUCTS_DIR; };
 		E283200220878AC6007CB0BF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E283200920878B47007CB0BF /* AdjacencyMatrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdjacencyMatrix.cpp; sourceTree = "<group>"; };
+		E283200A20878B47007CB0BF /* AdjacencyMatrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdjacencyMatrix.hpp; sourceTree = "<group>"; };
+		E283200C20879688007CB0BF /* EdgeTable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EdgeTable.cpp; sourceTree = "<group>"; };
+		E283200D20879688007CB0BF /* EdgeTable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EdgeTable.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				E283200220878AC6007CB0BF /* main.cpp */,
+				E283200920878B47007CB0BF /* AdjacencyMatrix.cpp */,
+				E283200C20879688007CB0BF /* EdgeTable.cpp */,
+				E283200A20878B47007CB0BF /* AdjacencyMatrix.hpp */,
+				E283200D20879688007CB0BF /* EdgeTable.hpp */,
 			);
 			path = Graphs;
 			sourceTree = "<group>";
@@ -118,7 +128,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E283200E20879688007CB0BF /* EdgeTable.cpp in Sources */,
 				E283200320878AC6007CB0BF /* main.cpp in Sources */,
+				E283200B20878B47007CB0BF /* AdjacencyMatrix.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
