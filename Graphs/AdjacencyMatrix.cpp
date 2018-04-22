@@ -20,6 +20,8 @@ AdjacencyMatrix::~AdjacencyMatrix(){
     for(int i=0;i<n;i++)
         delete[] tab[i];
     delete[] tab;
+    delete[] sorted;
+    delete[] visited;
 }
 
 void AdjacencyMatrix::fill(int array[]){
@@ -45,6 +47,23 @@ void AdjacencyMatrix::printTab(){
     }
     std::cout<<"\n";
 }
+
+void AdjacencyMatrix::printSorted(){
+    for(int i=0;i<n;i++){
+        std::cout<<sorted[i];
+    }
+    std::cout<<"\n";
+}
+
+void AdjacencyMatrix::DFS(int v){
+    visited[v] = true;
+    std::cout<<v<<" ";
+    for(int i=0;i<n;i++)
+        if(tab[v][i] && !visited[i])
+            DFS(i);
+    sorted[--temp] = v;
+}
+
 
 void AdjacencyMatrix::BFS(){
     int b_count[n];
@@ -72,12 +91,4 @@ void AdjacencyMatrix::BFS(){
         }
     }
     std::cout<<"\n";
-}
-
-void AdjacencyMatrix::preorder(){
-    return;
-}
-
-void AdjacencyMatrix::postorder(){
-    return;
 }

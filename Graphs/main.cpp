@@ -19,11 +19,15 @@ int main(int argc, const char * argv[]) {
                     {0,0,0,0,1,0},
                     {0,0,0,0,0,1},
                     {0,0,0,0,0,0}};
+    
     int n_tab[] = {1,1,0,1,0,0,1,0,0,1,0,0,1,0,1};
     AdjacencyMatrix *macierz = new AdjacencyMatrix(6);
     macierz->fill(n_tab);
     macierz->printTab();
-    macierz->BFS();
+    for(int i=0;i<6;i++)
+        if(!macierz->GetVisited(i))
+            macierz->DFS(i);
+//    macierz->printSorted();
     delete macierz;
     return 0;
 }
