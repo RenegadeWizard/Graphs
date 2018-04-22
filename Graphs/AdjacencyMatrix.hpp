@@ -16,15 +16,16 @@ public:
     void BFS();
     int GetN(){return n;}
     bool GetVisited(int v){return visited[v];}
+    int** GetTab(){return tab;}
     void printTab();
     void printSorted();
     AdjacencyMatrix(int ile);
     ~AdjacencyMatrix();
 private:
     int n;
-    int temp = n;
+    int temp = n-1;
     int **tab = new int *[n];
     bool *visited = new bool [n];
     int *sorted = new int [n];
-    int *ptr = &sorted[n-1];
+//    int *ptr = &sorted[n-1];
 };

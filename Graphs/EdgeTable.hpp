@@ -11,10 +11,17 @@
 
 class EdgeTable{
 public:
-    void preorder();
-    void postorder();
-    EdgeTable(int ile);
+    void BFS();
+    void DFS(int v);
+    void PrintTab();
+    bool GetVisited(int v){return visited[v];}
+    EdgeTable(int p,int **arr);
+    ~EdgeTable();
 private:
-    int n;
-    int **tab = new int *[n];
+    int n = 0;
+    int elem;
+    int temp = n-1;
+    int **tab = new int *[2];
+    bool *visited = new bool [n];
+    int *sorted = new int [n];
 };

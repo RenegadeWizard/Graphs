@@ -61,7 +61,7 @@ void AdjacencyMatrix::DFS(int v){
     for(int i=0;i<n;i++)
         if(tab[v][i] && !visited[i])
             DFS(i);
-    sorted[--temp] = v;
+    sorted[temp--] = v;
 }
 
 
