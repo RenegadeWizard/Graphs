@@ -25,6 +25,7 @@ EdgeTable::EdgeTable(int p,int **arr){
                 k++;
             }
     elem = p;
+    temp = n-1;
 }
 
 EdgeTable::~EdgeTable(){
@@ -72,7 +73,7 @@ void EdgeTable::DFS(int v){
     std::cout<<v<<" ";
     for(int i=0;i<n;i++)
         if(tab[0][i]==v && !visited[tab[1][i]])
-            DFS(i);
+            DFS(tab[1][i]);
     sorted[temp--] = v;
 }
 

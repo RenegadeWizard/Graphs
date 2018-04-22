@@ -12,6 +12,7 @@
 
 AdjacencyMatrix::AdjacencyMatrix(int ile){
     n = ile;
+    temp = n-1;
     for(int i = 0;i < n;i++)
         tab[i] = new int [n];
 }

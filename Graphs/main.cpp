@@ -25,10 +25,10 @@ int main(int argc, const char * argv[]) {
     macierz->fill(n_tab);
     EdgeTable *tablica = new EdgeTable(6,macierz->GetTab());
     tablica->PrintTab();
-//    for(int i=0;i<6;i++)
-//        if(!tablica->GetVisited(i))
-//                tablica->DFS(i);
-    tablica->BFS();
+    for(int i=0;i<6;i++)
+        if(!tablica->GetVisited(i))
+                tablica->DFS(i);
+//    tablica->BFS();
 //    macierz->printTab();
 //    for(int i=0;i<6;i++)
 //        if(!macierz->GetVisited(i))

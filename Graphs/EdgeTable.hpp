@@ -20,7 +20,7 @@ public:
 private:
     int n = 0;
     int elem;
-    int temp = n-1;
+    int temp;
     int **tab = new int *[2];
     bool *visited = new bool [n];
     int *sorted = new int [n];

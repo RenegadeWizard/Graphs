@@ -23,7 +23,7 @@ public:
     ~AdjacencyMatrix();
 private:
     int n;
-    int temp = n-1;
+    int temp;
     int **tab = new int *[n];
     bool *visited = new bool [n];
     int *sorted = new int [n];
