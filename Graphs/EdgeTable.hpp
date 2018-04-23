@@ -15,6 +15,7 @@ public:
     void DFS(int v);
     void PrintTab();
     bool GetVisited(int v){return visited[v];}
+    void PrintSorted();
     EdgeTable(int p,int **arr);
     ~EdgeTable();
 private:

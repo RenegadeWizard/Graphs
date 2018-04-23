@@ -13,27 +13,46 @@
 
 
 int main(int argc, const char * argv[]) {
-    int tab[6][6] = {{0,1,1,0,1,0},
-                    {0,0,1,1,0,0},
-                    {0,0,0,1,0,0},
-                    {0,0,0,0,1,0},
-                    {0,0,0,0,0,1},
-                    {0,0,0,0,0,0}};
     
-    int n_tab[] = {1,1,0,1,0,0,1,0,0,1,0,0,1,0,1};
-    AdjacencyMatrix *macierz = new AdjacencyMatrix(6);
-    macierz->fill(n_tab);
-    EdgeTable *tablica = new EdgeTable(6,macierz->GetTab());
-    tablica->PrintTab();
-    for(int i=0;i<6;i++)
-        if(!tablica->GetVisited(i))
+    int sizes[] = {1000,2000,5000,10000,20000,30000,40000,60000,80000,100000};
+    int size_sizes = sizeof(sizes)/sizeof(*sizes);
+    
+    for(int i=0;i<size_sizes;i++){
+//        zaczytywanie danych z pliku
+        int *n_tab = new int [sizes[i]];
+        
+        AdjacencyMatrix *macierz = new AdjacencyMatrix(sizes[i]);
+        macierz->fill(n_tab);
+        EdgeTable *tablica = new EdgeTable(sizes[i],macierz->GetTab());
+        
+//        Timer start
+        macierz->BFS();
+//        Timer stop
+        
+        
+//        Timer start
+        for(int i=0;i<6;i++)
+            if(!macierz->GetVisited(i))
+                macierz->DFS(i);
+//        Timer stop
+        
+        
+//        Timer start
+        tablica->BFS();
+//        Timer stop
+        
+        
+//        Timer start
+        for(int i=0;i<6;i++)
+            if(!tablica->GetVisited(i))
                 tablica->DFS(i);
-//    tablica->BFS();
-//    macierz->printTab();
-//    for(int i=0;i<6;i++)
-//        if(!macierz->GetVisited(i))
-//            macierz->DFS(i);
-//    macierz->printSorted();
-    delete macierz;
+//        Timer stop
+        
+        
+        delete macierz;
+        delete tablica;
+        delete[] n_tab;
+    }
+    
     return 0;
 }

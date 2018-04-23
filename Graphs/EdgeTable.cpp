@@ -77,3 +77,10 @@ void EdgeTable::DFS(int v){
     sorted[temp--] = v;
 }
 
+void EdgeTable::PrintSorted(){
+    for(int i=0;i<elem;i++){
+        std::cout<<sorted[i]<<" ";
+    }
+    std::cout<<"\n";
+}
+
