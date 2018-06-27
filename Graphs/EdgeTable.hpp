@@ -11,7 +11,8 @@
 
 class EdgeTable{
 public:
-    void BFS();
+    void SortBFS();
+    void SortDFS();
     void DFS(int v);
     void PrintTab();
     bool GetVisited(int v){return visited[v];}
@@ -19,10 +20,10 @@ public:
     EdgeTable(int p,int **arr);
     ~EdgeTable();
 private:
-    int n = 0;
+    int n;
     int elem;
-    int temp;
+    int temp1;
     int **tab = new int *[2];
-    bool *visited = new bool [n];
-    int *sorted = new int [n];
+    bool *visited;
+    int *sorted;
 };

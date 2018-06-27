@@ -13,30 +13,42 @@
 AdjacencyMatrix::AdjacencyMatrix(int ile){
     n = ile;
     temp = n-1;
+    tab = new int *[n];
+    visited = new bool [n];
+    sorted = new int [n];
     for(int i = 0;i < n;i++)
         tab[i] = new int [n];
 }
 
 AdjacencyMatrix::~AdjacencyMatrix(){
-    for(int i=0;i<n;i++)
-        delete[] tab[i];
-    delete[] tab;
-    delete[] sorted;
-    delete[] visited;
+//        for(int i=0;i<n;i++)
+//            delete[] tab[i];
+//        delete[] tab;
+//        delete[] sorted;
+//        delete[] visited;
 }
 
-void AdjacencyMatrix::fill(int array[]){
+void AdjacencyMatrix::fill(int array[]) {
     int *ptr = array;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            if(i<j){
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i < j) {
                 tab[i][j] = *ptr;
                 ptr++;
-            }else{
+            }
+            else {
                 tab[i][j] = 0;
             }
         }
     }
+    
+//    for (int i = 0; i < n; i++) {
+//        for (int j = 0; j < n; j++) {
+//            printf("%d ", tab[i][j]);
+//        }
+//        printf("\n");
+//    }
+    
 }
 
 void AdjacencyMatrix::printTab(){
@@ -58,16 +70,22 @@ void AdjacencyMatrix::printSorted(){
 
 void AdjacencyMatrix::DFS(int v){
     visited[v] = true;
-    std::cout<<v<<" ";
+    //    std::cout<<v<<" ";
     for(int i=0;i<n;i++)
         if(tab[v][i] && !visited[i])
             DFS(i);
     sorted[temp--] = v;
 }
 
+void AdjacencyMatrix::SortDFS(){
+    for(int i=0;i<n;i++)
+        if(!visited[i])
+            DFS(i);
+}
 
-void AdjacencyMatrix::BFS(){
-    int b_count[n];
+
+void AdjacencyMatrix::SortBFS(){
+    int *b_count= new int [n];
     int temp = n;
     for(int i=0;i<n;i++)
         b_count[i] = 0;
@@ -86,10 +104,24 @@ void AdjacencyMatrix::BFS(){
                 for(int j=0;j<n;j++)
                     if(tab[i][j]==1)
                         b_count[j]--;
-                std::cout<<i<<" ";
+                //                std::cout<<i<<" ";
                 temp--;
             }
         }
     }
-    std::cout<<"\n";
+    //    std::cout<<"\n";
+    delete b_count;
 }
+
+void AdjacencyMatrix::Euler(int v){
+    for(int i=0;i>n;i++){
+        if(tab[v][i]){
+            tab[v][i]--;
+            tab[i][v]--;
+            Euler(i);
+        }
+    }
+    std::cout<<v<<" ";
+}
+
+

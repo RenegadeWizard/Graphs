@@ -10,10 +10,13 @@
 #include <stdio.h>
 
 class AdjacencyMatrix{
+    friend class AdjacencyList;
+    friend class GraphMatrix;
 public:
     void fill(int tab[]);
     void DFS(int v);
-    void BFS();
+    void SortBFS();
+    void SortDFS();
     int GetN(){return n;}
     bool GetVisited(int v){return visited[v];}
     int** GetTab(){return tab;}
@@ -21,11 +24,15 @@ public:
     void printSorted();
     AdjacencyMatrix(int ile);
     ~AdjacencyMatrix();
+    void Euler(int v);
 private:
     int n;
     int temp;
-    int **tab = new int *[n];
-    bool *visited = new bool [n];
-    int *sorted = new int [n];
-//    int *ptr = &sorted[n-1];
+    //    int **tab = new int *[n];
+    //    bool *visited = new bool [n];
+    //    int *sorted = new int [n];
+    int **tab;
+    bool *visited;
+    int *sorted;
+    //    int *ptr = &sorted[n-1];
 };

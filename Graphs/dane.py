@@ -1,6 +1,6 @@
 import random
 
-ilosc = [1000,2000,5000,10000,20000,30000,40000,60000,80000,100000]
+ilosc = [500,1000,1500,2000,2500,3000,3500,4000,4500,5000]
 
 def losowo(ile):
     return [random.randrange(i+1)+1 for i in range(ile)]
@@ -36,17 +36,17 @@ def shuffle(tab):
 
 def adjacency_random(ile):
     ones = [1 for i in range(int((ile*(ile-1))/4))]
-    zeros = [0 for i in range(abs(int(ile/2)-int((ile*(ile-1))/4)))]
+    zeros = [0 for i in range(int((ile*(ile-1))/4))]
     whole_tab = ones + zeros
     return shuffle(whole_tab)
 
 
 def Main():
-    # with open('dane.txt','w') as f:
-    #     for ile in ilosc:
-    #         a = ''.join(str(i)+' ' for i in los_bez_pow(ile))
-    #         f.write(a+'\n')
-    print(adjacency_random(1000))
+    with open('dane.txt','w') as f:
+        for ile in ilosc:
+            a = ''.join(str(i)+' ' for i in adjacency_random(ile))
+            f.write(a+'\n')
+            print('Koniec: ',ile,' : ',len(a.split(' ')))
 
 # def check_if(tab):
 #     for i in tab:

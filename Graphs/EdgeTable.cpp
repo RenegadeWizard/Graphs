@@ -10,6 +10,7 @@
 #include <iostream>
 
 EdgeTable::EdgeTable(int p,int **arr){
+    n = 0;
     for(int i=0;i<p;i++)
         for(int j=0;j<p;j++)
             if(arr[i][j])
@@ -25,12 +26,14 @@ EdgeTable::EdgeTable(int p,int **arr){
                 k++;
             }
     elem = p;
-    temp = n-1;
+    temp1 = elem-1;
+    visited = new bool [elem];
+    sorted = new int [elem];
 }
 
 EdgeTable::~EdgeTable(){
-    for(int i=0;i<n;i++)
-        delete[] tab[i];
+//    for(int i=0;i<n;i++)
+//        delete[] tab[i];
     delete[] tab;
     delete[] visited;
     delete[] sorted;
@@ -41,16 +44,16 @@ void EdgeTable::PrintTab(){
         std::cout<<tab[0][i]<<" "<<tab[1][i]<<"\n";
 }
 
-void EdgeTable::BFS(){
-    int b_count[elem];
+void EdgeTable::SortBFS(){
+    int *b_count = new int [elem];
     int temp = elem;
     for(int i=0;i<elem;i++)
         b_count[i] = 0;
     for(int i=0;i<n;i++)
         b_count[tab[1][i]]++;
-    for(int i=0;i<elem;i++)
-        std::cout<<b_count[i]<<" ";
-    std::cout<<"\n";
+    for(int i=0;i<elem;i++);
+//        std::cout<<b_count[i]<<" ";
+//    std::cout<<"\n";
     while(temp){
         for(int i=0;i<elem;i++){
             if(b_count[i]==-1)
@@ -60,21 +63,28 @@ void EdgeTable::BFS(){
                 for(int j=0;j<n;j++)
                     if(tab[0][j]==i)
                         b_count[tab[1][j]]--;
-                std::cout<<i<<" ";
+//                std::cout<<i<<" ";
                 temp--;
             }
         }
     }
-    std::cout<<"\n";
+//    std::cout<<"\n";
+    delete[] b_count;
+}
+
+void EdgeTable::SortDFS(){
+    for(int i=0;i<elem;i++)
+        if(!visited[i])
+            DFS(i);
 }
 
 void EdgeTable::DFS(int v){
     visited[v] = true;
-    std::cout<<v<<" ";
+//    std::cout<<v<<" ";
     for(int i=0;i<n;i++)
         if(tab[0][i]==v && !visited[tab[1][i]])
             DFS(tab[1][i]);
-    sorted[temp--] = v;
+    sorted[temp1--] = v;
 }
 
 void EdgeTable::PrintSorted(){
