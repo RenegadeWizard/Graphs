@@ -28,16 +28,13 @@ GraphMatrix::GraphMatrix(AdjacencyMatrix source)
 
 GraphMatrix::GraphMatrix(AdjacencyMatrix *source)
 {
-//    std::cout << "n = " << source->n << "\n";
     inicjalize(source->tab, source->n);
-//    std::cout << "n = " << n << "\n";
     
 }
 
 void GraphMatrix::inicjalize(int **tab, int _size)
 {
     n = _size;
-//    std::cout << "n = " << n << "\n";
     //intiazlize Adjacency Lists
     AdjacencyList    *succesors = new AdjacencyList(tab, _size, AdjacencyList::NEXT),
     *predecessors = new AdjacencyList(tab, _size, AdjacencyList::PREV),
@@ -70,7 +67,6 @@ void GraphMatrix::inicjalize(int **tab, int _size)
     for (int i = 0; i < n; i++) {
         //fill the succesors of i-th element <1, n>
         for (std::list<int>::const_iterator iter = succesors->lists[i].begin(), end = succesors->lists[i].end(); iter != end; ++iter) {
-            //for (auto iter : succesors.lists[i]){
             std::list<int>::const_iterator next = iter;
             next++;
             if (next != succesors->lists[i].end()) {
@@ -85,7 +81,6 @@ void GraphMatrix::inicjalize(int **tab, int _size)
         
         //fill the predecessors of i-th element <-n, -1>
         for (std::list<int>::const_iterator iter = predecessors->lists[i].begin(), end = predecessors->lists[i].end(); iter != end; ++iter) {
-            //for (auto iter : succesors.lists[i]){
             std::list<int>::const_iterator next = iter;
             next++;
             if (next != predecessors->lists[i].end()) {
@@ -101,7 +96,6 @@ void GraphMatrix::inicjalize(int **tab, int _size)
         
         //fill elem with no incidences to i-th element <n+1, 2n>
         for (std::list<int>::const_iterator iter = noincidences->lists[i].begin(), end = noincidences->lists[i].end(); iter != end; ++iter) {
-            //for (auto iter : succesors.lists[i]){
             std::list<int>::const_iterator next = iter;
             next++;
             if (next != noincidences->lists[i].end()) {
@@ -116,32 +110,9 @@ void GraphMatrix::inicjalize(int **tab, int _size)
         }
     }
     
-    //Write the matrix for debugging
-//    std::cout << "idx\tS\tP\tN\t ";
-//    for (int i = 0; i < n; i++)
-//        std::cout << i + 1 << "\t";
-//    std::cout << "\n";
-    
-//    for (int i = 0; i < n; i++) {
-//        std::cout << i + 1 << " |\t";
-//        for (int j = 0; j < 3; j++) {
-//            std::cout << matrix[i][j] << "\t";
-//        }
-//        std::cout << "|";
-//        for (int j = 3; j < n + 3; j++) {
-//            std::cout << matrix[i][j] << "\t";
-//        }
-//        std::cout << "\n";
-//    }
-//
-//    std::cout << "n = " << n << "\n";
-    
     delete succesors;
     delete predecessors;
     delete noincidences;
-    
-//    std::cout << "n = " << n << "\n";
-    
 }
 
 GraphMatrix::GraphMatrix(int tab[6][6], int _size)
@@ -179,7 +150,6 @@ GraphMatrix::GraphMatrix(int tab[6][6], int _size)
     for (int i = 0; i < n; i++) {
         //fill the succesors of i-th element <1, n>
         for (std::list<int>::const_iterator iter = succesors->lists[i].begin(), end = succesors->lists[i].end() ; iter != end; ++iter) {
-            //for (auto iter : succesors.lists[i]){
             std::list<int>::const_iterator next = iter;
             next++;
             if (next != succesors->lists[i].end()) {
@@ -194,7 +164,6 @@ GraphMatrix::GraphMatrix(int tab[6][6], int _size)
         
         //fill the predecessors of i-th element <-n, -1>
         for (std::list<int>::const_iterator iter = predecessors->lists[i].begin(), end = predecessors->lists[i].end(); iter != end; ++iter) {
-            //for (auto iter : succesors.lists[i]){
             std::list<int>::const_iterator next = iter;
             next++;
             if (next != predecessors->lists[i].end()) {
@@ -210,7 +179,6 @@ GraphMatrix::GraphMatrix(int tab[6][6], int _size)
         
         //fill elem with no incidences to i-th element <n+1, 2n>
         for (std::list<int>::const_iterator iter = noincidences->lists[i].begin(), end = noincidences->lists[i].end(); iter != end; ++iter) {
-            //for (auto iter : succesors.lists[i]){
             std::list<int>::const_iterator next = iter;
             next++;
             if (next != noincidences->lists[i].end()) {
@@ -225,41 +193,21 @@ GraphMatrix::GraphMatrix(int tab[6][6], int _size)
         }
     }
     
-    //Write the matrix for debugging
-//    std::cout << "idx\tS\tP\tN\t ";
-//    for (int i = 0; i < n; i++)
-//        std::cout << i + 1 << "\t";
-//    std::cout << "\n";
-    
-//    for (int i = 0; i < n; i++) {
-//        std::cout << i+1 << " |\t";
-//        for (int j = 0; j < 3; j++) {
-//            std::cout << matrix[i][j] << "\t";
-//        }
-//        std::cout << "|";
-//        for (int j = 3; j < n + 3; j++) {
-//            std::cout << matrix[i][j] << "\t";
-//        }
-//        std::cout << "\n";
-//    }
-    
     delete succesors;
     delete predecessors;
     delete noincidences;
 }
 
-GraphMatrix::~GraphMatrix()
-{
+GraphMatrix::~GraphMatrix() {
+
 }
 
 
-void GraphMatrix::DFS(int i, int &idx)
-{
-    //NOTE : this function and all the helping structures is inexing from 0, but Graph Matrix Requires to index from 1,
-    //this means I had to manipulate the indexes on the run.
+void GraphMatrix::DFS(int i, int &idx) {
+    //NOTE : this function and all the helping structures is indexing from 0, but Graph Matrix Requires to index from 1,
+    //this means I had to manipulate the indices on the run.
     if (visited == NULL)
         return;
-//    printf("\n%d\n", i);
     visited[i] = 1;
     long long int iter = matrix[i][0];
     //for every succesor
@@ -267,22 +215,16 @@ void GraphMatrix::DFS(int i, int &idx)
     while (twice != 2 && iter != 0) {
         if (!visited[iter - 1])
             DFS(iter - 1, idx);
-//        printf("%d ", iter);
         iter = matrix[i][2 + iter];
         if (iter == matrix[i][2 + iter])
             twice++;
     }
-//    printf("\n");
     sorted[--idx] = i;
 }
 
-void GraphMatrix::sortDFS()
-{
-//    std::cout << "sortDFS\n";
-//    std::cout << "n = " << n << "\n";
+void GraphMatrix::sortDFS() {
     visited = new int[n];
     for (int i = 0; i < n; i++) {
-//        std::cout << "\tinicjalizuje "<<i<<" element tablicy\n";
         visited[i] = 0;
     }
     sorted = new int[n];
@@ -292,10 +234,6 @@ void GraphMatrix::sortDFS()
         if (!visited[i])
             DFS(i, idx);
     }
-    
-//    for (int i = 0; i < n; i++)
-//        std::cout << sorted[i] + 1 << " ";
-//    std::cout << "\n";
     delete visited;
     delete sorted;
 }
@@ -357,10 +295,6 @@ void GraphMatrix::sortBFS()
             first_iteration = false;
         }
     }
-    //write the sorted Graph
-//    for (int i = 0; i < n; i++)
-//        std::cout << sorted[i] + 1 << " ";
-//    std::cout << "\n";
     
 //    delete visited;
 //    delete sorted;

@@ -52,8 +52,6 @@ void EdgeTable::SortBFS(){
     for(int i=0;i<n;i++)
         b_count[tab[1][i]]++;
     for(int i=0;i<elem;i++);
-//        std::cout<<b_count[i]<<" ";
-//    std::cout<<"\n";
     while(temp){
         for(int i=0;i<elem;i++){
             if(b_count[i]==-1)
@@ -63,12 +61,10 @@ void EdgeTable::SortBFS(){
                 for(int j=0;j<n;j++)
                     if(tab[0][j]==i)
                         b_count[tab[1][j]]--;
-//                std::cout<<i<<" ";
                 temp--;
             }
         }
     }
-//    std::cout<<"\n";
     delete[] b_count;
 }
 
@@ -80,7 +76,6 @@ void EdgeTable::SortDFS(){
 
 void EdgeTable::DFS(int v){
     visited[v] = true;
-//    std::cout<<v<<" ";
     for(int i=0;i<n;i++)
         if(tab[0][i]==v && !visited[tab[1][i]])
             DFS(tab[1][i]);

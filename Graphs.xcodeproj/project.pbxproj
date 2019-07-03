@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E221766D208E37B900FEA732 /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E221766B208E37B900FEA732 /* Timer.cpp */; };
 		E2217673208E686400FEA732 /* AdjacencyList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2217671208E686400FEA732 /* AdjacencyList.cpp */; };
 		E2217676208E689500FEA732 /* GraphMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2217674208E689500FEA732 /* GraphMatrix.cpp */; };
 		E283200320878AC6007CB0BF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E283200220878AC6007CB0BF /* main.cpp */; };
@@ -28,7 +27,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E221766B208E37B900FEA732 /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cpp; sourceTree = "<group>"; };
 		E221766C208E37B900FEA732 /* Timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Timer.hpp; sourceTree = "<group>"; };
 		E2217671208E686400FEA732 /* AdjacencyList.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AdjacencyList.cpp; sourceTree = "<group>"; };
 		E2217672208E686400FEA732 /* AdjacencyList.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AdjacencyList.hpp; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 				E283200A20878B47007CB0BF /* AdjacencyMatrix.hpp */,
 				E283200C20879688007CB0BF /* EdgeTable.cpp */,
 				E283200D20879688007CB0BF /* EdgeTable.hpp */,
-				E221766B208E37B900FEA732 /* Timer.cpp */,
 				E221766C208E37B900FEA732 /* Timer.hpp */,
 			);
 			path = Graphs;
@@ -148,7 +145,6 @@
 				E283200320878AC6007CB0BF /* main.cpp in Sources */,
 				E2217673208E686400FEA732 /* AdjacencyList.cpp in Sources */,
 				E283200B20878B47007CB0BF /* AdjacencyMatrix.cpp in Sources */,
-				E221766D208E37B900FEA732 /* Timer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

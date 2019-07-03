@@ -28,11 +28,7 @@ public:
 private:
     int n;
     int temp;
-    //    int **tab = new int *[n];
-    //    bool *visited = new bool [n];
-    //    int *sorted = new int [n];
     int **tab;
     bool *visited;
     int *sorted;
-    //    int *ptr = &sorted[n-1];
 };
